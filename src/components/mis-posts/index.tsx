@@ -35,8 +35,6 @@ export default function Posts() {
 
   const { data: posts, isLoading, mutate } = useSWR([`/api/posts`, user?.uuid], fetcher)
 
-  console.log(posts)
-
   return (
     <div className='flex flex-col gap-4'>
       <h1 className={`${inter.className} text-3xl font-semibold text-regal-blue`}>Mis Posts</h1>

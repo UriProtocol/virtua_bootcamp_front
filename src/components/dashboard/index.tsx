@@ -33,7 +33,7 @@ export default function Dashboard() {
     const perPage = searchParams.get('perPage') || '5'
 
 
-    const { data: posts, isLoading } = useSWR(['/api/posts', page, perPage, search], fetcher)
+    const { data: posts, isLoading, mutate } = useSWR(['/api/posts', page, perPage, search], fetcher)
 
     const { user } = useAuth({ middleware: 'auth' })
 
@@ -45,7 +45,7 @@ export default function Dashboard() {
                 isLoading ?
                     <Spinner className=' mt-4' color='default' size='lg' />
                     : posts?.data?.data?.length
-                        ? posts.data.data?.map((post: Post) => <PostComponent key={post.uuid} post={post} user_uuid={user?.uuid || ''} />)
+                        ? posts.data.data?.map((post: Post) => <PostComponent key={post.uuid} post={post} user_uuid={user?.uuid || ''} mutate={mutate} />)
                         : (
                             <div className=' w-full border-4 rounded-lg bg-slate-400/5 text-slate-400/50 border-slate-400/50 border-dashed flex justify-center items-center p-8'>
                                 No hay posts para mostrar

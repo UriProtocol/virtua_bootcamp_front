@@ -1,8 +1,9 @@
 import { Post } from "@/lib/types";
 import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
 import Image from "next/image";
+import CommentsComponent from "./CommentsComponent";
 
-export default function PostComponent({ post, user_uuid }: { post: Post, user_uuid: string }) {
+export default function PostComponent({ post, user_uuid, mutate }: { post: Post, user_uuid: string, mutate: () => void }) {
     return (
         <Card className=" w-full border-2 border-slate-400/50 text-regal-blue" shadow="none">
             <CardHeader className="flex gap-3">
@@ -25,6 +26,8 @@ export default function PostComponent({ post, user_uuid }: { post: Post, user_uu
             <CardBody>
                 <p className="font-semibold">{post.name}</p>
                 <p className="font-normal opacity-60">{post.description}</p>
+                <Divider className=" my-4"/>
+                <CommentsComponent post_uuid={post.uuid} mutate={mutate}/>
             </CardBody>
 
         </Card>

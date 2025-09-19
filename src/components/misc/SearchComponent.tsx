@@ -17,7 +17,7 @@ export default function SearchComponent() {
     }
     params.set("page", "1");
     window.history.pushState(null, "", `${pathname}?${params.toString()}`);
-  }, 300);
+  }, 500);
 
   const handleClear = () => {
     const params = new URLSearchParams(searchParams);
@@ -32,7 +32,7 @@ export default function SearchComponent() {
       onClear={handleClear}
       placeholder="Buscar..."
       startContent={<SearchOutlinedIcon />}
-      className="w-full px-4"
+      className="w-full"
       onChange={(e) => {
         handleSearch(e.target.value);
       }}

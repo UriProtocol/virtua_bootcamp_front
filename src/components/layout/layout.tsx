@@ -2,19 +2,15 @@ import { useState } from 'react';
 import SideNav from "@/components/sidenav";
 import Header from "@/components/header";
 import Loading from '@/app/Loading'
+import { Card } from '@nextui-org/react';
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-    const [isCollapsed, setIsCollapsed] = useState(false);
-
-    const handleCollapse = (collapsed: boolean) => {
-        setIsCollapsed(collapsed);
-    };
 
     return (
         <div className="min-h-screen bg-gray-100">
                 <div className="flex h-screen">
-                    <div className={`flex-none transition-width duration-400 ${isCollapsed ? 'w-16' : 'w-64'}`}>
-                        <SideNav onCollapse={handleCollapse}/>
+                    <div className={`flex-none transition-width duration-400 w-72`}>
+                        <SideNav/>
                     </div>
 
                     <div className="flex flex-col flex-grow overflow-hidden">
@@ -23,7 +19,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                         </div>
 
                         <div className="flex-grow overflow-y-auto p-6 md:p-12">
-                            {children}
+                            <Card className=' p-12 h-full overflow-y-auto'>
+                                {children}
+                            </Card>
                         </div>
                     </div>
                 </div>

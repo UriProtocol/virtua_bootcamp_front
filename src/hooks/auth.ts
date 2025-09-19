@@ -5,9 +5,14 @@ import { useParams, useRouter, usePathname } from 'next/navigation'
 
 interface User {
     id: number;
+    uuid: string
     name: string;
     email: string;
     email_verified_at: string | null;
+    roles: [{
+        id: number,
+        name: string
+    }]
 }
 
 interface UseAuthReturn {

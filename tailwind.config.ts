@@ -1,4 +1,3 @@
-import type { Config } from "tailwindcss";
 const { nextui } = require("@nextui-org/react");
 
 module.exports = {
